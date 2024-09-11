@@ -4,79 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla de Móvil</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css">
+    <style>
+        .custom-select option {
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            text-align: center;
+        }
+        #vehicleFilter {
+            background-color: transparent;
+            border: none;
+            font-weight: bold;
+            color: black;
+            padding-top: 11.1px;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table th {
+            padding: 0.75rem;
+        }
+        .table .form-control {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-    <table class="no-border">
-        <thead>
-            <tr>
-                <th>FRANJA</th>
-                <th>
-                    <div>VEHICULO</div>
-                    <select class="filter-select">
-                        <option class="cabecera-vehiculo">VEHÍCULO</option>
-                        <option value="Moto">Moto</option>
-                        <option value="4X4">4X4</option>
-                        <option value="Auto">Auto</option>
-                        <option value="Camioneta">Camioneta</option>
-                        <option value="Camión">Camión</option>
-                        <option value="Utilitario">Utilitario</option>
-                    </select>
-                </th>
-                <th>MONTO</th>
-                <th>ESTADO</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>15hs a 20hs</td>
-                <td>Moto</td>
-                <td>$500.00</td>
-                <td class="activo">Activo</td>
-            </tr>
-            <tr>
-                <td>20hs a 00hs</td>
-                <td>4X4</td>
-                <td>$500.00</td>
-                <td class="activo">Activo</td>
-            </tr>
-            <tr>
-                <td>00hs a 9hs</td>
-                <td>Auto</td>
-                <td>$500.00</td>
-                <td class="inactivo">Inactivo</td>
-            </tr>
-            <tr>
-                <td>9hs a 15hs</td>
-                <td>Camioneta</td>
-                <td>$500.00</td>
-                <td class="activo">Activo</td>
-            </tr>
-            <tr>
-                <td>9hs a 15hs</td>
-                <td>Auto</td>
-                <td>$500.00</td>
-                <td class="inactivo">Inactivo</td>
-            </tr>
-            <tr>
-                <td>9hs a 15hs</td>
-                <td>Moto</td>
-                <td>$500.00</td>
-                <td class="inactivo">Inactivo</td>
-            </tr>
-            <tr>
-                <td>9hs a 15hs</td>
-                <td>Camión</td>
-                <td>$500.00</td>
-                <td class="activo">Activo</td>
-            </tr>
-            <tr>
-                <td>9hs a 15hs</td>
-                <td>Utilitario</td>
-                <td>$500.00</td>
-                <td class="activo">Activo</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th>FRANJA</th>
+                    <th>
+                        <select id="vehicleFilter" class="form-select custom-select" onchange="filterTable()">
+                            <option value="all">VEHICULO</option>
+                            <option value="Moto">Moto</option>
+                            <option value="4X4">4X4</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="Camión">Camión</option>
+                            <option value="Utilitario">Utilitario</option>
+                        </select>
+                    </th>
+                    <th>MONTO</th>
+                    <th>ESTADO</th>
+                </tr>
+            </thead>
+            <tbody id="vehicleTable">
+                <tr>
+                    <td>15hs a 20hs</td>
+                    <td>Moto</td>
+                    <td>$500.00</td>
+                    <td class="text-success">Activo</td>
+                </tr>
+                <tr>
+                    <td>20hs a 00hs</td>
+                    <td>4X4</td>
+                    <td>$500.00</td>
+                    <td class="text-success">Activo</td>
+                </tr>
+                <tr>
+                    <td>00hs a 9hs</td>
+                    <td>Auto</td>
+                    <td>$500.00</td>
+                    <td class="text-danger">Inactivo</td>
+                </tr>
+                <tr>
+                    <td>9hs a 15hs</td>
+                    <td>Camioneta</td>
+                    <td>$500.00</td>
+                    <td class="text-success">Activo</td>
+                </tr>
+                <tr>
+                    <td>9hs a 15hs</td>
+                    <td>Auto</td>
+                    <td>$500.00</td>
+                    <td class="text-danger">Inactivo</td>
+                </tr>
+                <tr>
+                    <td>9hs a 15hs</td>
+                    <td>Moto</td>
+                    <td>$500.00</td>
+                    <td class="text-danger">Inactivo</td>
+                </tr>
+                <tr>
+                    <td>9hs a 15hs</td>
+                    <td>Camión</td>
+                    <td>$500.00</td>
+                    <td class="text-success">Activo</td>
+                </tr>
+                <tr>
+                    <td>9hs a 15hs</td>
+                    <td>Utilitario</td>
+                    <td>$500.00</td>
+                    <td class="text-success">Activo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function filterTable() {
+            var filter = document.getElementById("vehicleFilter").value;
+            var rows = document.getElementById("vehicleTable").getElementsByTagName("tr");
+            for (var i = 0; i < rows.length; i++) {
+                var vehicle = rows[i].getElementsByTagName("td")[1].textContent;
+                if (filter === "all" || vehicle === filter) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
